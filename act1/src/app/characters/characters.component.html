@@ -1,0 +1,162 @@
+<style>
+.page{
+    width: 100%;
+    height: 120vh;
+    background-image: url("modwebss.png");
+    background-size: cover;
+    background-color: #D9D9D9;
+    position: relative;
+}
+.logan{
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 100px;
+    margin-left: 5%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0%;
+    padding-top: 1px;
+    z-index: 1;
+    margin-bottom: 20px;
+}
+.subtittle{
+    font-size: 5cqh;
+    font-weight: 10000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0%;
+    padding: 0%;
+}
+.subtittle2{
+    font-size: 8cqh;
+    font-weight: 10000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 20px;
+    margin-left: 60px;
+}
+.contet-middle{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+.char{
+    margin-left: 150px;
+    margin-top: -80px;
+    position: absolute;
+    z-index: 10;
+}
+.imagen{
+    margin-top: -575px;
+    position: absolute;
+    margin-bottom: 0%;
+    margin-left: 160px;
+    padding: 0%;
+}
+.img{
+    width: 1100px;
+    height: 860px;
+    z-index: 2;
+}
+.info{
+    position: absolute;
+    margin-left: 70.4%;
+    margin-top: -240px;
+}
+#img2{
+    opacity: 10%;
+    z-index: 1;
+}
+.charinfo{
+margin-top: -360px;
+text-align: center;
+}
+#location{
+    font-size: 25px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.names{
+    font-size: 32px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0%;
+    margin: 0%;
+    font-weight: bold;
+}
+.bttns{
+    height: 120px;
+    background-color: black;
+    position: absolute;
+    margin-top: 210px;
+    margin-left: 22%;
+    border-radius: 15px;
+}
+button{
+    border: none;
+    background-color: transparent;
+}
+.arrows{
+    height: 40px;
+    width: 36px;
+    margin-bottom: 12px;
+}
+.arrows:hover{
+    cursor: pointer;
+}
+#invert{
+    transform: scaleX(-1);
+}
+.icons{
+    margin: 0%;
+    height: 65px;
+    width: 95px;
+}
+.active-btn {
+  background-color: #F5FF6D; 
+  border: none;
+  border-radius: 15px;
+}
+.img-style1{
+    width: 1250px;
+    height: 860px;
+    z-index: 2;
+    margin-left: 6%;
+}
+.img-style2{
+    width: 1100px;
+    height: 750px;
+    margin-left: 8%;
+    margin-top: 110px;
+}
+</style>
+<div class="page">
+<div>
+    <div class="logan">
+    <h1>{{charactersArray[Index].state}}</h1>
+    </div>
+    <div class="contet-middle">
+        <div class="char">
+        <h3 class="subtittle">Personaje</h3>
+        <h2 class="subtittle2">0{{charactersArray[Index].id}}</h2>
+        </div>
+        <div class="imagen">
+            <img [ngClass]="{'img-style1': Index === 1,'img-style2': Index === 2, 'img': Index === 0}" class="img" src={{charactersArray[Index].img}} alt="">
+        </div>
+        <div class="info">
+            <img id="img2" src="sonS.png" alt="">
+            <div class="charinfo">
+            <h3 id="location">{{charactersArray[Index].location}}</h3>
+            <h4 class="names">{{charactersArray[Index].firstname}}</h4>
+            <h4 class="names">{{charactersArray[Index].lastname}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="bttns">
+        <button (click)="prevCharacter()" [disabled]="Index === 0">
+            <img id="invert" class="arrows" src="arrow.png" alt="">
+        </button>
+        <button (click)="setCharacter(0)" [ngClass]="{'active-btn': Index === 0}"><img class="icons" src="iconeditburnice.png" alt=""></button>
+        <button (click)="setCharacter(1)" [ngClass]="{'active-btn': Index === 1}"><img class="icons" src="iconeditcaesar.png" alt=""></button>
+        <button (click)="setCharacter(2)" [ngClass]="{'active-btn': Index === 2}"><img class="icons" src="iconeditlucy.png" alt=""></button>
+        <button (click)="nextCharacter()" [disabled]="Index === charactersArray.length - 1">
+            <img class="arrows" src="arrow.png" alt="">
+        </button>
+    </div>
+</div>

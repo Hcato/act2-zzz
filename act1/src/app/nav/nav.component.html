@@ -1,0 +1,141 @@
+<style>
+.navegation {
+    background-color: rgba(0, 0, 0, 0.996);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    position: fixed;
+    margin: 0;
+    padding: 0 1rem;
+    height: 7ch; 
+}
+
+.buttons {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.bttnnav {
+    background-color: transparent;
+    border: none;
+    border-radius: 37.5px; 
+    color: #696969;
+    margin-left: 75px; 
+    box-sizing: border-box;
+    cursor: pointer; 
+    font-weight: bold;
+    font-size: small;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, font-weight 0.3s ease;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.bttnnav:hover {
+    background-color: #D9D9D9;
+    color: black;
+    font-weight: bold;
+    font-size: small;
+    transform: scale(1.2);
+}
+
+.logos{
+    position: relative;
+}
+#logo, #logo2 {
+  opacity: 1;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: scale(1);
+}
+#logo {
+    margin-top: 160px;
+    margin-left: 190px;
+    height: 171px;
+    width: 162px;
+}
+#logo2{
+    height: 6ch;
+    width: 20ch;
+    margin-left: 192px;
+}
+.logo-fade-out {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: absolute;
+}
+
+.logo-fade-in {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#firstbtt{
+    margin-left: 6%;
+}
+.specialbtt {
+    background-color: #E2FF25;
+    border: none;
+    border-radius: 37.5px; 
+    color: black;
+    margin-left: 75px; 
+    box-sizing: border-box;
+    cursor: pointer; 
+    font-weight: bold;
+    font-size: small;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 150px;
+}
+#volumebtt{
+    cursor: pointer;
+    height: 34px;
+    width: 34px;
+    margin-left: 80px;
+}
+#accountbtt{
+    height: 50px;
+    width: 53px;
+    margin-left: 80px;
+}
+</style>
+<main>
+<div class="navegation">
+    <div class="logos">
+        @if (logonav == reference) {
+            <img [class.logo-fade-out]="!logoVisible"
+       [class.logo-fade-in]="logoVisible" id="logo" [src]="reference" alt="">
+        }@else {
+            <img [class.logo-fade-out]="logoVisible"
+            [class.logo-fade-in]="!logoVisible" id="logo2" [src]="logonav" alt="">
+        }
+    </div>
+    <div class="buttons">
+        <button class="bttnnav" id="firstbtt">
+            Inicio
+        </button>
+        <button class="bttnnav">
+            Personajes
+        </button>
+        <button class="bttnnav">
+            Noticias
+        </button>
+        <div class="buttons">
+            <button class="specialbtt" (click)="openModal()">Descargar ahora</button>
+            <app-modal [showModal]="isModalVisible" (close)="isModalVisible = false"></app-modal>
+            <img id="volumebtt" src="volume_1.png" alt=""(click)="mutemusic()"[src]="actualimg">
+            <img id="accountbtt" src="accounticon.png" alt="">
+        </div>
+    </div>
+</div>
+</main>
