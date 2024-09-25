@@ -15,11 +15,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/act1",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "baseHref": "/act2-zzz/",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -28,19 +29,13 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public",
-                "output": "/assets/"
+                "input": "public"
               }
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
